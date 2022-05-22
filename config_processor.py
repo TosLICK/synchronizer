@@ -21,13 +21,13 @@ def __is_src_path_valid(path: str) -> bool:
         return False
 
 def __is_dstn_path_valid(src_path: str, dstn_path: str) -> bool:
-    if __is_folder(dstn_path) and os.path.abspath(src_path) != os.path.abspath(dstn_path) or __try_create_folder(dstn_path):
-        return True
-    elif os.path.abspath(src_path) == os.path.abspath(dstn_path):
-        logger.instance.error("Destination folder is the same as the source folder")
-    else:
+    if os.path.abspath(src_path) == os.path.abspath(dstn_path):
+        logger.instance.error("Destination folder can not be the same as the source folder")
+        return False
+    if not (__is_folder(dstn_path) or __try_create_folder(dstn_path)):
         logger.instance.error("Destination folder '%s' does not exist and could not be created", dstn_path)
-    return False
+        return False
+    return True
 
 def __is_interval_sec_valid(interval: int) -> bool:
     if interval > 0:
@@ -35,7 +35,6 @@ def __is_interval_sec_valid(interval: int) -> bool:
     else:
         logger.instance.error("Interval '%d' must be greater than zero", interval)
         return False
-
 
 def validate(config_obj: Config) -> None:
     if not __is_src_path_valid(config_obj.src_folder) or not __is_dstn_path_valid(config_obj.src_folder

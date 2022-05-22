@@ -25,10 +25,3 @@ def initialize_logger(log_file: str) -> None:
 
     global instance
     instance = my_logger
-
-# 'application' code
-""" logger.debug('debug message')
-logger.info('info message')
-logger.warning('warn message')
-logger.error('error message')
-logger.critical('critical message') """

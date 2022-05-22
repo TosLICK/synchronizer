@@ -1,8 +1,12 @@
 # synchronizer
 ### Description
-Scheduled synchronization of two folders in one direction. Program gets pathes from user to source directory, destination directory, synchronizating interval (in seconds) and a path to a log file. Deleting files in destination folder if relevant files were deleted in source folder supported.
+This script performs scheduled synchronization of two folders: from source to destination. Program gets pathes from the user to a source directory, destination directory, synchronization interval (in seconds) and a path to a log file. It deletes files in the destination folder if the corresponding files were removed in the source folder.
 ### Installation
-dirsync and schedule libraries needed to be installed previously.
+```powershell
+pip install dirsync
+pip install schedule
+```
 ### Usage
-From the comand line:
-`python sync.py C:/Users/My_documents/source_dir destination_dir 60 C:/my_log_file.log`
+```powershell
+python sync.py C:/Users/My_documents/source_dir destination_dir 60 C:/my_log_file.log
+```
